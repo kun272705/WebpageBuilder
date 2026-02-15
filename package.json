@@ -7,8 +7,6 @@
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "core-js": "^3.48.0",
-    "posthtml-cli": "^0.10.0",
-    "posthtml-include": "^2.0.1",
     "regenerator-runtime": "^0.14.1",
     "rollup": "^4.57.1",
     "terser": "^5.46.0"
