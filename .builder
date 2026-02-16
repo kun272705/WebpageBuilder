@@ -17,7 +17,6 @@ build_html() {
   local input="$1"
   local output="$2"
 
-  # TODO
   if [ -f "$input" ]; then
     
     echo -e "\n$input -> $output"
@@ -52,7 +51,7 @@ build_js() {
 
     echo -e "\n$input -> $output"
 
-    npx rollup --jsx preserve -i "$input" -o "${output/%.js/.combined.js}" --failAfterWarnings
+    npx rollup -c -i "$input" -o "${output/%.js/.combined.js}" --failAfterWarnings
 
     npx swc "${output/%.js/.combined.js}" -o "${output/%.js/.transpiled.js}"
     
