@@ -1,2 +1,2 @@
 
-console.info('Hello, WebpageBuilder!');
+console.info('Hello, WebsiteBuilder!');

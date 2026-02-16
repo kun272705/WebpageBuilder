@@ -1,2 +1,2 @@
 
-A webpage builder.
+A website builder.
