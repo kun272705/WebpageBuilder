@@ -71,11 +71,25 @@ build_js() {
     else
 
       npx terser "${output/%.js/.transpiled.js}" -o "${output/%.js/.compressed.js}" -c -m
+
       cp "${output/%.js/.compressed.js}" "$output"
     fi
 
     rm "${output/%.js/.combined.js}"
     rm "${output/%.js/.transpiled.js}"
     rm -f "${output/%.js/.compressed.js}"
+  fi
+}
+
+build_java() {
+
+  local input="$1"
+  local output="$2"
+
+  if [ -f "$input" ]; then
+
+    echo -e "\n'$input' -> '$output'"
+
+    # TODO
   fi
 }

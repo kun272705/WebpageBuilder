@@ -40,6 +40,7 @@ for dir in source/pub.*/; do
     build_html "$dir/$name.html" "target/$dir2/$name.html"
     build_css "$dir/$name.css" "target/$dir2/$name.css"
     build_js "$dir/$name.js" "target/$dir2/$name.js"
+    build_java "$dir/$name.java" "target/$dir2/$name.jar"
   fi
 done
 
