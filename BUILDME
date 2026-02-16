@@ -34,12 +34,12 @@ for dir in source/pub.*/; do
   dir="${dir%/}"
   
   name="${dir##*.}"
+
+  dir2="${dir#source/}"
+  dir2="${dir2%.*}"
+  dir2="${dir2//.//}"
   
   if [ -f "$dir/$name.html" ]; then
-
-    dir2="${dir#source/}"
-    dir2="${dir2%.*}"
-    dir2="${dir2//.//}"
 
     build_html "$dir/$name.html" "target/$dir2/$name.html"
     build_css "$dir/$name.css" "target/$dir2/$name.css"
