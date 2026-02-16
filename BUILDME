@@ -43,7 +43,7 @@ for dir in source/pub.*/; do
 
     build_js "$dir/$name.js" "target/$dir2/$name.js"
 
-    build_java "$dir/$name.java" "target/$dir2/$name.jar"
+    build_handler "$dir/$name" "target/$dir2/$name"
   fi
 done
 
