@@ -13,7 +13,7 @@ if [ -d source/pub.favicon/ ]; then
 
   for entry in source/pub.favicon/*; do
 
-    copy_entry "$entry" "target/pub/${entry#source/pub.favicon/}"
+    copy_entry "$entry" "target/pub/${entry#source/pub.favicon/}" 
   done
 fi
 

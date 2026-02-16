@@ -6,7 +6,7 @@ copy_entry() {
 
   if [ -e "$input" ]; then
 
-    echo -e "\n$input -> $output"
+    echo -e "\n'$input' -> '$output'"
 
     install -D "$input" "$output"
   fi
@@ -19,7 +19,7 @@ build_html() {
 
   if [ -f "$input" ]; then
     
-    echo -e "\n$input -> $output"
+    echo -e "\n'$input' -> '$output'"
   fi
 }
 
@@ -30,7 +30,7 @@ build_css() {
 
   if [ -f "$input" ]; then
     
-    echo -e "\n$input -> $output"
+    echo -e "\n'$input' -> '$output'"
 
     if [[ ${NODE_ENV:="production"} == "development" ]]; then
 
@@ -49,7 +49,7 @@ build_js() {
 
   if [ -f "$input" ]; then
 
-    echo -e "\n$input -> $output"
+    echo -e "\n'$input' -> '$output'"
 
     npx rollup -c -i "$input" -o "${output/%.js/.combined.js}" --failAfterWarnings
 
