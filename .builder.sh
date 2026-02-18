@@ -104,10 +104,10 @@ build_java() {
 
     if [ -d "$indir/locales/" ]; then
 
-      jar -c -v -f "$output" -C "$outdir/classes/" ./ -C "$indir/" locales/
+      jar -v -c -f "$output" -C "$outdir/classes/" ./ -C "$indir/" locales/
     else
 
-      jar -c -v -f "$output" -C "$outdir/classes/" ./
+      jar -v -c -f "$output" -C "$outdir/classes/" ./
     fi
 
     rm -r "$outdir/classes/"
