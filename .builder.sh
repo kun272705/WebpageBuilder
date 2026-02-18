@@ -17,6 +17,49 @@ copy_file() {
   fi
 }
 
+build_jar() {
+
+  local input="$1"
+  local output="$2"
+
+  if [ -f "$input" ]; then
+
+    echo -e "\n'$input' -> '$output'"
+
+    local indir="${input%/*}/"
+    local outdir="${output%/*}/"
+    local name="${input##*/}"
+    name="${name%.*}"
+
+    javac -cp "java_modules/*.jar" "$input" -d "$outdir"
+
+    local args=("-C" "$outdir" "Handler.class")
+
+    if [ -f "${indir}${name}.html" ]; then
+
+      if [[ "${NODE_ENV:-production}" == development ]]; then
+
+        npx ejs "${indir}${name}.html" -o "${outdir}template.html"
+      else
+
+        npx ejs "${indir}${name}.html" -o "${outdir}template.html" -w
+      fi
+
+      args+=("-C" "$outdir" "template.html")
+    fi
+
+    if [ -d "${indir}locales/" ]; then
+
+      args+=("-C" "$indir" "locales/")
+    fi
+
+    jar -c -f "$output" "${args[@]}"
+
+    rm "${outdir}Handler.class"
+    rm -f "${outdir}template.html"
+  fi
+}
+
 build_css() {
 
   local input="$1"
@@ -64,48 +107,5 @@ build_js() {
     rm "${output/%.js/.combined.js}"
     rm "${output/%.js/.transpiled.js}"
     rm -f "${output/%.js/.compressed.js}"
-  fi
-}
-
-build_jar() {
-
-  local input="$1"
-  local output="$2"
-
-  if [ -f "$input" ]; then
-
-    echo -e "\n'$input' -> '$output'"
-
-    local indir="${input%/*}/"
-    local outdir="${output%/*}/"
-    local name="${input##*/}"
-    name="${name%.*}"
-
-    javac -cp "java_modules/*.jar" "$input" -d "$outdir"
-
-    local args=("-C" "$outdir" "Handler.class")
-
-    if [ -f "${indir}${name}.html" ]; then
-
-      if [[ "${NODE_ENV:-production}" == development ]]; then
-
-        npx ejs "${indir}${name}.html" -o "${outdir}template.html"
-      else
-
-        npx ejs "${indir}${name}.html" -o "${outdir}template.html" -w
-      fi
-
-      args+=("-C" "$outdir" "template.html")
-    fi
-
-    if [ -d "${indir}locales/" ]; then
-
-      args+=("-C" "$indir" "locales/")
-    fi
-
-    jar -c -f "$output" "${args[@]}"
-
-    rm "${outdir}Handler.class"
-    rm -f "${outdir}template.html"
   fi
 }

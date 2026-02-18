@@ -4,9 +4,9 @@ set -euo pipefail
 
 source .builder.sh
 
-npm install
-
 mvn dependency:copy-dependencies -DoutputDirectory=java_modules/
+
+npm install
 
 for file in src/pub/res/*; do
 
@@ -30,11 +30,11 @@ for dir in src/pub/*/; do
 
   if [ -f "${dir}${name}.java" ]; then
 
+    build_jar "${dir}${name}.java" "${item}.jar"
+
     build_css "${dir}${name}.css" "${item}.css"
 
     build_js "${dir}${name}.js" "${item}.js"
-
-    build_jar "${dir}${name}.java" "${item}.jar"
   fi
 done
 
