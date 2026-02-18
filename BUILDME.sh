@@ -22,20 +22,21 @@ mvn dependency:copy-dependencies -DoutputDirectory=tgt/lib/ -DincludeScope=runti
 
 for dir in src/pub/*/; do
  
-  item="${dir//.//}"
+  item="tgt/pub/${dir#src/pub/}"
+  item="${item//.//}"
   item="${item%/}"
 
   name="${item##*/}"
 
   if [ -f "$dir$name.java" ]; then
 
-    build_html "$dir$name.html" "tgt/pub/${item#src/pub/}.html"
+    build_html "$dir$name.html" "$item.html"
 
-    build_css "$dir$name.css" "tgt/pub/${item#src/pub/}.css"
+    build_css "$dir$name.css" "$item.css"
 
-    build_js "$dir$name.js" "tgt/pub/${item#src/pub/}.js"
+    build_js "$dir$name.js" "$item.js"
 
-    build_java "$dir$name.java" "tgt/pub/${item#src/pub/}.jar"
+    build_java "$dir$name.java" "$item.jar"
   fi
 done
 
