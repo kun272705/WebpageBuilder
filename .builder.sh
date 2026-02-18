@@ -100,7 +100,7 @@ build_java() {
     local indir="${input%/*}"
     local outdir="${output%/*}"
 
-    javac -cp "tgt/lib/*.jar" "$indir/*.java" -d "$outdir/classes/"
+    javac -cp "java_modules/*.jar" "$indir/*.java" -d "$outdir/classes/"
 
     if [ -d "$indir/locales/" ]; then
 
