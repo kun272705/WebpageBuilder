@@ -48,9 +48,9 @@ build_jar() {
       args+=("-C" "$outdir" "template.html")
     fi
 
-    if [ -d "${indir}locales/" ]; then
+    if [ -d "${indir}resources/" ]; then
 
-      args+=("-C" "$indir" "locales/")
+      args+=("-C" "$indir" "resources/")
     fi
 
     jar -c -f "$output" "${args[@]}"
