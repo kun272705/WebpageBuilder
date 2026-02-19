@@ -4,9 +4,9 @@ set -euo pipefail
 
 source .builder.sh
 
-mvn dependency:copy-dependencies -DoutputDirectory=java_packages/ -DincludeScope=test
-
 npm install
+
+mvn dependency:copy-dependencies -DoutputDirectory=java_packages/ -DincludeScope=test
 
 for file in src/pub/res/*; do
 
