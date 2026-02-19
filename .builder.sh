@@ -17,7 +17,7 @@ copy_file() {
   fi
 }
 
-build_jar() {
+build_dll() {
 
   local input="$1"
   local output="$2"

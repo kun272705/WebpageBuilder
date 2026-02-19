@@ -30,7 +30,7 @@ for dir in src/pub/*/; do
 
   if [ -f "${dir}${name}.java" ]; then
 
-    build_jar "${dir}${name}.java" "${item}.jar"
+    build_dll "${dir}${name}.java" "${item}.jar"
 
     build_css "${dir}${name}.css" "${item}.css"
 
