@@ -31,7 +31,7 @@ build_jar() {
     local name="${input##*/}"
     name="${name%.*}"
 
-    javac -cp "java_modules/*.jar" "$input" -d "$outdir"
+    javac -cp "java_packages/*.jar" "$input" -d "$outdir"
 
     local args=("-C" "$outdir" "Handler.class")
 

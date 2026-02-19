@@ -4,7 +4,7 @@ set -euo pipefail
 
 source .builder.sh
 
-mvn dependency:copy-dependencies -DoutputDirectory=java_modules/
+mvn dependency:copy-dependencies -DoutputDirectory=java_packages/
 
 npm install
 
