@@ -8,6 +8,8 @@ mvn dependency:copy-dependencies -DoutputDirectory=java_packages/ -DincludeScope
 
 npm install
 
+vim .browserslistrc
+
 for file in src/pub/res/*; do
 
   copy_file "$file" "tgt/pub/${file##*/}"
