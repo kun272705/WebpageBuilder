@@ -30,9 +30,9 @@ for dir in src/pub/*/; do
 
   name="${item##*/}"
 
-  if [ -f "${dir}${name}.java" ]; then
+  if [ -f "${dir}Handler.java" ]; then
 
-    build_jar "${dir}${name}.java" "${item}.jar"
+    build_jar "${dir}Handler.java" "${item}.jar"
 
     build_css "${dir}${name}.css" "${item}.css"
 
