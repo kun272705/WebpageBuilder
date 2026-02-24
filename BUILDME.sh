@@ -17,9 +17,12 @@ for file in src/pub/res/*; do
   copy_file "$file" "tgt/pub/${file##*/}"
 done
 
-for file in src/pub/lib.*/*; do
+for dir in src/pub/lib.*/; do
 
-  copy_file "$file" "tgt/pub/lib/${file##*/}"
+  for file in "${dir}"*; do
+
+    copy_file "$file" "tgt/pub/lib/${file##*/}"
+  done
 done
 
 for dir in src/pub/*/; do
