@@ -1,2 +1,2 @@
 
-This is MyWebapp.
+This is MyWebApp.
